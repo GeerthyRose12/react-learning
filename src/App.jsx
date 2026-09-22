@@ -1,21 +1,21 @@
+import "./App.css";
+import { useState } from "react";
 
-import './App.css'
- 
+import StudentList from "./components/StudentList";
+import StudentCreate from "./components/StudentCreate";
+
 function App() {
-  const students = {
-    name : 'John Doe',
-    age : 20,
-    major : 'Computer Science',
-    active: false
+  const [students, setStudents] = useState([]);
+  function handleAddStudents(student) {
+    setStudents([...students, student]);
   }
-  return(
-    <div style={{color:'blue'}}>
-      <h1 style={{color:'blue'}}>{students.name}</h1>
-      <p>Age: {students.age}</p>
-      <p>Major: {students.major}</p>
-      {students.active ? (<p>student is active</p>) : (<p>student is inactive</p>)}
+
+  return (
+    <div>
+      <StudentCreate onAddStudent={handleAddStudents} />
+      <StudentList students={students} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
