@@ -1,21 +1,32 @@
+import "./App.css";
+import { useState } from "react";
 
-import './App.css'
- 
+import StudentList from "./components/StudentList";
+import StudentCreate from "./components/StudentCreate";
+
 function App() {
-  const students = {
-    name : 'John Doe',
-    age : 20,
-    major : 'Computer Science',
-    active: false
+  const [students, setStudents] = useState([]);
+  const [editStudent, setEditStudent] = useState(null)
+
+  function handleAddStudents(student) {
+    setStudents([...students, student]);
   }
-  return(
-    <div style={{color:'blue'}}>
-      <h1 style={{color:'blue'}}>{students.name}</h1>
-      <p>Age: {students.age}</p>
-      <p>Major: {students.major}</p>
-      {students.active ? (<p>student is active</p>) : (<p>student is inactive</p>)}
+
+  function handleDelete(id) {
+    setStudents(students.filter((s) => s.id !== id));
+  }
+
+  function handleEdit(updatedStudent) {
+    setStudents(students.map((s) => s.id === updatedStudent.id ? updatedStudent : s));
+    setEditStudent(null)
+  }
+
+  return (
+    <div>
+      <StudentCreate onAddStudent={handleAddStudents} onEdit={handleEdit} editStudent={editStudent} />
+      <StudentList students={students} onDelete={handleDelete} onEditClick={setEditStudent} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
