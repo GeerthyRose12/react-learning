@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import StudentList from "./components/StudentList";
 import StudentCreate from "./components/StudentCreate";
-
+import Product from "./components/Product"
 import './App.css'
 import {StudentCard, AnuCard, NumberCard, BoolCard, ArrayCard, ObjectCard, ObjectCard1} from './components/StudentCard'
 
@@ -55,27 +55,45 @@ import {StudentCard, AnuCard, NumberCard, BoolCard, ArrayCard, ObjectCard, Objec
 
 
 // State-events-forms
+// function App() {
+//   const [students, setStudents] = useState([]);
+//   const [editStudent, setEditStudent] = useState(null)
+
+//   function handleAddStudents(student) {
+//     setStudents([...students, student]);
+//   }
+
+//   function handleDelete(id) {
+//     setStudents(students.filter((s) => s.id !== id));
+//   }
+
+//   function handleEdit(updatedStudent) {
+//     setStudents(students.map((s) => s.id === updatedStudent.id ? updatedStudent : s));
+//     setEditStudent(null)
+//   }
+
+//   return (
+//     <div>
+//       <StudentCreate onAddStudent={handleAddStudents} onEdit={handleEdit} editStudent={editStudent} />
+//       <StudentList students={students} onDelete={handleDelete} onEditClick={setEditStudent} />
+//     </div>
+//   );
+// }
+
+// useFeect learning
+
 function App() {
-  const [students, setStudents] = useState([]);
-  const [editStudent, setEditStudent] = useState(null)
 
-  function handleAddStudents(student) {
-    setStudents([...students, student]);
-  }
-
-  function handleDelete(id) {
-    setStudents(students.filter((s) => s.id !== id));
-  }
-
-  function handleEdit(updatedStudent) {
-    setStudents(students.map((s) => s.id === updatedStudent.id ? updatedStudent : s));
-    setEditStudent(null)
-  }
+  // const [count, setCount] = useState(0);
 
   return (
+    // <div className="App">
+    //   <h1>React Learning</h1>
+    //   <p>Count: {count}</p>
+    //   <button onClick={() => setCount(count + 1)}>Increment</button>
+    // </div>
     <div>
-      <StudentCreate onAddStudent={handleAddStudents} onEdit={handleEdit} editStudent={editStudent} />
-      <StudentList students={students} onDelete={handleDelete} onEditClick={setEditStudent} />
+      <Product />
     </div>
   );
 }
