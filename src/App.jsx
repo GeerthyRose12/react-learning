@@ -1,5 +1,7 @@
 import "./App.css";
 import { useState } from "react";
+import axios from 'axios';
+import ProductAxiosApi from "./services/ProductAxiosApi"
 
 import StudentList from "./components/StudentList";
 import StudentCreate from "./components/StudentCreate";
@@ -82,20 +84,46 @@ import {StudentCard, AnuCard, NumberCard, BoolCard, ArrayCard, ObjectCard, Objec
 
 // useFeect learning
 
+// function App() {
+
+//   // const [count, setCount] = useState(0);
+
+//   return (
+//     // <div className="App">
+//     //   <h1>React Learning</h1>
+//     //   <p>Count: {count}</p>
+//     //   <button onClick={() => setCount(count + 1)}>Increment</button>
+//     // </div>
+//     <div>
+//       <Product />
+//     </div>
+//   );
+// }
+
+
 function App() {
+  const [products,setProducts] = useState([])
+  function getProducts(){
+    // axios.get('https://dummyjson.com/products')  ----->without service
 
-  // const [count, setCount] = useState(0);
-
+    // with service file
+    ProductAxiosApi.get('/products')     
+    .then((response) => {
+      console.log(response.data);
+      setProducts(response.data.products)
+    })
+  }
   return (
-    // <div className="App">
-    //   <h1>React Learning</h1>
-    //   <p>Count: {count}</p>
-    //   <button onClick={() => setCount(count + 1)}>Increment</button>
-    // </div>
     <div>
-      <Product />
+      <h1>Axios Learning</h1> 
+      {products.map((product)=>(
+        <li key={product.id}>{product.title}</li>
+      )
+
+      )}
+      <button onClick={getProducts}>Get Products</button>
     </div>
-  );
+  )
 }
 
 export default App;
