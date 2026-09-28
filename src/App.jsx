@@ -6,8 +6,8 @@ import StudentCreate from "./components/StudentCreate";
 import Product from "./components/Product"
 import './App.css'
 import {StudentCard, AnuCard, NumberCard, BoolCard, ArrayCard, ObjectCard, ObjectCard1} from './components/StudentCard'
-
-
+import LearningHooksRef from "./components/Hooks/LearningHooksRef"
+import UseMemoLearn from "./components/Hooks/UseMemoLearn"
 // props learning 
 
 
@@ -82,18 +82,28 @@ import {StudentCard, AnuCard, NumberCard, BoolCard, ArrayCard, ObjectCard, Objec
 
 // useFeect learning
 
+// function App() {
+
+//   // const [count, setCount] = useState(0);
+
+//   return (
+//     // <div className="App">
+//     //   <h1>React Learning</h1>
+//     //   <p>Count: {count}</p>
+//     //   <button onClick={() => setCount(count + 1)}>Increment</button>
+//     // </div>
+//     <div>
+//       <Product />
+//     </div>
+//   );
+// }
+
+// Hooks learning UseRef,UseContext,memo,callback,reducer
 function App() {
-
-  // const [count, setCount] = useState(0);
-
   return (
-    // <div className="App">
-    //   <h1>React Learning</h1>
-    //   <p>Count: {count}</p>
-    //   <button onClick={() => setCount(count + 1)}>Increment</button>
-    // </div>
-    <div>
-      <Product />
+    <div className="App">
+      <LearningHooksRef />
+      <UseMemoLearn />
     </div>
   );
 }
