@@ -1,34 +1,56 @@
+
+
 import react from "react"
-import {useState,useEffect,useRef} from 'react'
+import{useState, useRef} from "react"
 
-// useRef
-
-function LearningHooksRef () {
-    const [input, setInput] = useState("")
-    const inputRef = useRef()
-    console.log("Getting rendered")
-
-    useEffect(() => {
-        console.log("use effect called")
-        inputRef.current = input
-    }, [input]);
-
-    const display = () => console.log(inputRef.current)
-    return (
+const LearningHooksRef =() => {
+    // const [count, setCount] = useState(0)
+    const countRef  = useRef(0)
+    function handleClick () {
+        // setCount(count + 1)
+        countRef.current = countRef.current + 1
+         console.log(countRef.current);
+    }
+    return(
         <div>
             <h1>Learning Hooks</h1>
-            <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            />
-            <p>my name is {input}</p>
-            <p>my name is{inputRef.current}</p>
-            <button onClick={display}>Display</button>
-
+            <h3>Count : {countRef.current}</h3>
+            <button onClick = {handleClick}>click</button>
         </div>
-
     )
 }
 
 export default LearningHooksRef
+
+
+// import { useRef } from "react";
+
+// function LearningHooksRef() {
+
+//   const inputRef = useRef(null);
+
+//   const handleFocus = () => {
+//     inputRef.current.focus();
+//   };
+
+//   return (
+//     <div>
+
+//       <input
+//         type="text"
+//         ref={inputRef}
+//         placeholder="Enter your name"
+//       />
+
+//       <button onClick={handleFocus}>
+//         Focus Input
+//       </button>
+
+//     </div>
+//   );
+// }
+
+// export default LearningHooksRef;
+
+
+

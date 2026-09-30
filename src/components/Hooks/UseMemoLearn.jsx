@@ -1,30 +1,27 @@
-import react from "react"
-import {useState} from "react";
+import { useState,useMemo } from "react";
 
 const UseMemoLearn = () => {
-    const [number, setNumber] = useState(0)
-    const [dark, setDark] = useState(false)
 
-    const doubleNumber = slowFunction(number);
+  const [count, setCount] = useState(0);
 
-    const themeStyles = {
-        backgroundColor: dark ? 'black' : 'white',
-        color: dark ? 'white' : 'black'
-    };
-    return (
-        <div>
-        <input type="number" value={number} onChange={(e) => setNumber(e.target.value)} />
-        <button onClick={() => setDark((curr) => !curr)}>toggle theme</button>
-        <div style={themeStyles}>{doubleNumber}</div>
-</div>
-    )
+    const result = useMemo(() => {
+
+    console.log("Calculation running...");
+
+    return 10 * 20;
+
+  },[]);
+  // const result = calculate()
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <h2>Result: {result}</h2>
+
+      <button onClick={() => setCount(count + 1)}>
+        Increase
+      </button>
+    </div>
+  );
 };
+
 export default UseMemoLearn;
-
-
-function slowFunction(num) {
-    for (let i = 0; i < 1000000000; i++) {}
-        return num * 2;
-}
-
-
