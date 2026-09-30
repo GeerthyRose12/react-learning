@@ -1,5 +1,7 @@
 import "./App.css";
 import { useState } from "react";
+import axios from 'axios';
+import ProductAxiosApi from "./services/ProductAxiosApi"
 
 import StudentList from "./components/StudentList";
 import StudentCreate from "./components/StudentCreate";
@@ -82,20 +84,82 @@ import {StudentCard, AnuCard, NumberCard, BoolCard, ArrayCard, ObjectCard, Objec
 
 // useFeect learning
 
-function App() {
+// function App() {
 
-  // const [count, setCount] = useState(0);
+//   // const [count, setCount] = useState(0);
 
-  return (
-    // <div className="App">
-    //   <h1>React Learning</h1>
-    //   <p>Count: {count}</p>
-    //   <button onClick={() => setCount(count + 1)}>Increment</button>
-    // </div>
-    <div>
-      <Product />
-    </div>
-  );
+//   return (
+//     // <div className="App">
+//     //   <h1>React Learning</h1>
+//     //   <p>Count: {count}</p>
+//     //   <button onClick={() => setCount(count + 1)}>Increment</button>
+//     // </div>
+//     <div>
+//       <Product />
+//     </div>
+//   );
+// }
+
+// Axios Learning
+
+// function App() {
+//   const [products,setProducts] = useState([])
+//   function getProducts(){
+//     // axios.get('https://dummyjson.com/products')  ----->without service
+
+//     // with service file
+//     ProductAxiosApi.get('/products')     
+//     .then((response) => {
+//       console.log(response.data);
+//       setProducts(response.data.products)
+//     })
+//   }
+//   return (
+//     <div>
+//       <h1>Axios Learning</h1> 
+//       {products.map((product)=>(
+//         <li key={product.id}>{product.title}</li>
+//       )
+
+//       )}
+//       <button onClick={getProducts}>Get Products</button>
+//     </div>
+//   )
+// }
+
+
+// Router Learning
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import Home from "./pages/Home"
+import Users from "./pages/Users"
+import About from "./pages/About"
+import Contact from "./pages/Contact"
+import Navbar from "./components/Navbar"
+import User from "./pages/User"
+import Error from "./pages/Error"
+import Profile from "./pages/users/Profile"
+import Settings from "./pages/users/Settings"
+
+
+function App () {
+    return (
+        <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/users" element={<Users />}>
+              <Route path="profile" element={<Profile />} />
+              <Route path="settings" element={<Settings />} />
+          </Route>
+
+          <Route path="/user/:username" element={<User />}/>
+          <Route path="/about" element={<About />}/>
+          <Route path="/contact" element={<Contact />}/>
+          <Route path="*" element={<Error />}/>
+        </Routes>
+        </BrowserRouter>
+    )
 }
+
 
 export default App;
