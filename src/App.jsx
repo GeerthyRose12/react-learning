@@ -137,6 +137,8 @@ import Contact from "./pages/Contact"
 import Navbar from "./components/Navbar"
 import User from "./pages/User"
 import Error from "./pages/Error"
+import Profile from "./pages/users/Profile"
+import Settings from "./pages/users/Settings"
 
 
 function App () {
@@ -145,7 +147,11 @@ function App () {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/users" element={<Users />}/>
+          <Route path="/users" element={<Users />}>
+              <Route path="profile" element={<Profile />} />
+              <Route path="settings" element={<Settings />} />
+          </Route>
+
           <Route path="/user/:username" element={<User />}/>
           <Route path="/about" element={<About />}/>
           <Route path="/contact" element={<Contact />}/>
