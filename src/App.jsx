@@ -100,30 +100,60 @@ import {StudentCard, AnuCard, NumberCard, BoolCard, ArrayCard, ObjectCard, Objec
 //   );
 // }
 
+// Axios Learning
 
-function App() {
-  const [products,setProducts] = useState([])
-  function getProducts(){
-    // axios.get('https://dummyjson.com/products')  ----->without service
+// function App() {
+//   const [products,setProducts] = useState([])
+//   function getProducts(){
+//     // axios.get('https://dummyjson.com/products')  ----->without service
 
-    // with service file
-    ProductAxiosApi.get('/products')     
-    .then((response) => {
-      console.log(response.data);
-      setProducts(response.data.products)
-    })
-  }
-  return (
-    <div>
-      <h1>Axios Learning</h1> 
-      {products.map((product)=>(
-        <li key={product.id}>{product.title}</li>
-      )
+//     // with service file
+//     ProductAxiosApi.get('/products')     
+//     .then((response) => {
+//       console.log(response.data);
+//       setProducts(response.data.products)
+//     })
+//   }
+//   return (
+//     <div>
+//       <h1>Axios Learning</h1> 
+//       {products.map((product)=>(
+//         <li key={product.id}>{product.title}</li>
+//       )
 
-      )}
-      <button onClick={getProducts}>Get Products</button>
-    </div>
-  )
+//       )}
+//       <button onClick={getProducts}>Get Products</button>
+//     </div>
+//   )
+// }
+
+
+// Router Learning
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import Home from "./pages/Home"
+import Users from "./pages/Users"
+import About from "./pages/About"
+import Contact from "./pages/Contact"
+import Navbar from "./components/Navbar"
+import User from "./pages/User"
+import Error from "./pages/Error"
+
+
+function App () {
+    return (
+        <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/users" element={<Users />}/>
+          <Route path="/user/:username" element={<User />}/>
+          <Route path="/about" element={<About />}/>
+          <Route path="/contact" element={<Contact />}/>
+          <Route path="*" element={<Error />}/>
+        </Routes>
+        </BrowserRouter>
+    )
 }
+
 
 export default App;
